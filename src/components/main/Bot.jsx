@@ -4,8 +4,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ChatArea from "./ChatArea";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://nova-ai-backend-nuhj.onrender.com/";
-
 function Bot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -46,7 +44,7 @@ function Bot() {
     setMessages((prev) => [...prev, { sender: "user", text: input.trim() }]);
 
     try {
-      const res = await axios.post(`${API_URL}/bot/v1/message`, {
+      const res = await axios.post(`https://nova-ai-backend-nuhj.onrender.com/bot/v1/message`, {
         text: input,
         conversationId,
       });

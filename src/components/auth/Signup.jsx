@@ -63,7 +63,7 @@ export default function ChatbotSignupPage() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/signup`, {
+      const res = await fetch(`https://nova-ai-backend-nuhj.onrender.com/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
