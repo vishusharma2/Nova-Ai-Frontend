@@ -44,7 +44,7 @@ function Bot() {
     setMessages((prev) => [...prev, { sender: "user", text: input.trim() }]);
 
     try {
-      const res = await axios.post(`https://nova-ai-backend-nuhj.onrender.com/bot/v1/message`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/bot/v1/message`, {
         text: input,
         conversationId,
       });
