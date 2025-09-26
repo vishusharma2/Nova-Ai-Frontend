@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ChatArea from "./ChatArea";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4002";
+const API_URL = import.meta.env.VITE_API_URL || "https://nova-ai-backend-nuhj.onrender.com/";
 
 function Bot() {
   const [messages, setMessages] = useState([]);
