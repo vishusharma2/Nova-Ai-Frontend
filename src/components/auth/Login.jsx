@@ -132,7 +132,7 @@ export default function ChatbotLoginPage() {
             <div className="mt-8 text-center">
               <p className="text-white/70">
                 New here?{" "}
-                <a href="/signup" className="text-cyan-300 hover:text-cyan-200 font-semibold transition-colors">
+                <a href="signup" className="text-cyan-300 hover:text-cyan-200 font-semibold transition-colors">
                   Create account
                 </a>
               </p>
