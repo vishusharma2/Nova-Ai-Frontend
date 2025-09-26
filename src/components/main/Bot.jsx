@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ChatArea from "./ChatArea";
+const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, "");
 
 function Bot() {
   const [messages, setMessages] = useState([]);
@@ -44,7 +45,7 @@ function Bot() {
     setMessages((prev) => [...prev, { sender: "user", text: input.trim() }]);
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/bot/v1/message`, {
+      const res = await axios.post(`${baseUrl}/bot/v1/message`, {
         text: input,
         conversationId,
       });

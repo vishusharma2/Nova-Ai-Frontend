@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff, Mail, Lock, ArrowRight, Bot, Sparkles, Brain } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, "");
 
 export default function ChatbotLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +19,7 @@ export default function ChatbotLoginPage() {
     setError("");
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, {
+      const res = await fetch(`${baseUrl}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
