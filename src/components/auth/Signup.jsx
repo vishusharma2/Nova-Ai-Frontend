@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Eye, EyeOff, Mail, Lock, User, Bot, MessageCircle, ArrowRight, Brain, Zap } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, Bot, MessageCircle, ArrowRight, Check, Brain, Zap, Sparkles } from "lucide-react";
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function ChatbotSignupPage() {
@@ -88,6 +88,7 @@ export default function ChatbotSignupPage() {
           useCase: "",
           experience: ""
         });
+        // Redirect to login after 2s
         setTimeout(() => navigate("/login"), 2000);
       } else {
         setErrorMessage(data.message || "Something went wrong!");
@@ -104,7 +105,7 @@ export default function ChatbotSignupPage() {
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 flex items-center justify-center p-4">
       <div className="relative w-full max-w-lg">
         <div className="backdrop-blur-xl bg-white/10 rounded-3xl border border-white/20 shadow-2xl p-8 transform transition-all duration-300 hover:scale-[1.02] hover:bg-white/15">
-          
+
           {/* Header */}
           <div className="text-center mb-8">
             <div className="w-24 h-24 rounded-2xl mx-auto mb-6 flex items-center justify-center relative overflow-hidden">
@@ -129,7 +130,6 @@ export default function ChatbotSignupPage() {
 
           {/* Form */}
           <div className="space-y-5">
-
             {/* Username */}
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -160,45 +160,49 @@ export default function ChatbotSignupPage() {
               />
             </div>
 
-            {/* Use Case */}
-            <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
-                <MessageCircle className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
+           {/* Use Case Dropdown */}
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+                  <MessageCircle className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
+                </div>
+                <select
+                  value={formData.useCase}
+                  onChange={(e) => handleInputChange('useCase', e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg appearance-none cursor-pointer"
+                  required
+                >
+                  <option value="" className="bg-slate-800 text-white">What will you use the chatbot for?</option>
+                  {useCases.map((useCase) => (
+                    <option key={useCase} value={useCase} className="bg-slate-800 text-white">
+                      {useCase}
+                    </option>
+                  ))}
+                </select>
               </div>
-              <select
-                value={formData.useCase}
-                onChange={(e) => handleInputChange("useCase", e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg appearance-none cursor-pointer"
-                required
-              >
-                <option value="">What will you use the chatbot for?</option>
-                {useCases.map((useCase) => (
-                  <option key={useCase} value={useCase}>{useCase}</option>
-                ))}
-              </select>
-            </div>
 
-            {/* Experience Level */}
-            <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
-                <Zap className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
+              {/* Experience Level */}
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+                  <Zap className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
+                </div>
+                <select
+                  value={formData.experience}
+                  onChange={(e) => handleInputChange('experience', e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg appearance-none cursor-pointer"
+                  required
+                >
+                  <option value="" className="bg-slate-800 text-white">Your AI experience level?</option>
+                  {experienceLevels.map((level) => (
+                    <option key={level} value={level} className="bg-slate-800 text-white">
+                      {level}
+                    </option>
+                  ))}
+                </select>
               </div>
-              <select
-                value={formData.experience}
-                onChange={(e) => handleInputChange("experience", e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg appearance-none cursor-pointer"
-                required
-              >
-                <option value="">Your AI experience level?</option>
-                {experienceLevels.map((level) => (
-                  <option key={level} value={level}>{level}</option>
-                ))}
-              </select>
-            </div>
 
             {/* Password */}
-            <div className="space-y-2 relative group">
-              <div className="relative">
+            <div className="space-y-4">
+              <div className="relative group">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
                 </div>
@@ -218,31 +222,27 @@ export default function ChatbotSignupPage() {
                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>
               </div>
-              <div className="bg-gray-800 text-gray-200 p-3 rounded-lg text-sm">
-                Password must contain one uppercase, one lowercase, a number, and a unique character.
-              </div>
-            </div>
 
-            {/* Confirm Password */}
-            <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Lock className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
+                </div>
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  value={formData.confirmPassword}
+                  onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
+                  placeholder="Confirm password"
+                  className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-white/50 hover:text-cyan-300 transition-colors"
+                >
+                  {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                </button>
               </div>
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                value={formData.confirmPassword}
-                onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                placeholder="Confirm password"
-                className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute inset-y-0 right-0 pr-4 flex items-center text-white/50 hover:text-cyan-300 transition-colors"
-              >
-                {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-              </button>
             </div>
 
             {/* Terms */}
