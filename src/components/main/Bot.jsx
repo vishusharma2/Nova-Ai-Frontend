@@ -3,7 +3,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ChatArea from "./ChatArea";
-const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, "");
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 function Bot() {
   const [messages, setMessages] = useState([]);
