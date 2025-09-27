@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff, Mail, Lock, ArrowRight, Bot, Sparkles, Brain } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, "");
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function ChatbotLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
