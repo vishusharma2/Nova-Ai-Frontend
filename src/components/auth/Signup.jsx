@@ -201,22 +201,23 @@ export default function ChatbotSignupPage() {
               </div>
 
             {/* Password */}
-            <div className="space-y-4">
-              <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
-                </div>
-                <div className="bg-gray-800 text-gray-200 p-4 rounded-lg mt-2 text-sm">
-                  Password must contain one uppercase, lowercase, a number, and a unique character.
-                </div>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  value={formData.password}
-                  onChange={(e) => handleInputChange("password", e.target.value)}
-                  placeholder="Create password"
-                  className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg"
-                  required
-                />
+           <div className="space-y-2 relative group">
+             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+               <Lock className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
+             </div>
+             <input
+               type={showPassword ? "text" : "password"}
+               value={formData.password}
+               onChange={(e) => handleInputChange("password", e.target.value)}
+               placeholder="Create password"
+               className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyan-400 focus:bg-white/20 transition-all duration-300 backdrop-blur-sm focus:shadow-cyan-500/20 focus:shadow-lg"
+               required
+               />
+             <div className="bg-gray-800 text-gray-200 p-3 rounded-lg mt-1 text-sm">
+               Password must contain one uppercase, lowercase, a number, and a unique character.
+             </div>
+           </div>
+
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
