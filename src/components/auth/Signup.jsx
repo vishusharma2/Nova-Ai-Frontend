@@ -206,6 +206,9 @@ export default function ChatbotSignupPage() {
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-white/50 group-focus-within:text-cyan-300 transition-colors" />
                 </div>
+                <div className="bg-gray-800 text-gray-200 p-4 rounded-lg mt-2 text-sm">
+                  Password must contain one uppercase, lowercase, a number, and a unique character.
+                </div>
                 <input
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
