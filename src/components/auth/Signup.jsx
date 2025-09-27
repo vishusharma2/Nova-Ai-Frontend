@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Bot, MessageCircle, ArrowRight, Check, Brain, Zap, Sparkles } from "lucide-react";
-const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, "");
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function ChatbotSignupPage() {
   const navigate = useNavigate();
